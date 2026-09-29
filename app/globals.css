@@ -1,26 +1,717 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* ===========================
+     Core Theme
+  =========================== */
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+
+  /* ===========================
+     Surface System
+  =========================== */
+
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-elevated: var(--surface-elevated);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* ===========================
+     Brand Colors
+  =========================== */
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-neon: var(--neon-glow);
+  --color-brand-dark: var(--brand-dark-green);
+
+  /* ===========================
+     Text Colors
+  =========================== */
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-accent: var(--text-accent);
+  --color-text-neon: var(--text-neon);
+
+  /* ===========================
+     States
+  =========================== */
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  /* ===========================
+     UI
+  =========================== */
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-hover: var(--hover);
+
+  /* ===========================
+     Charts
+  =========================== */
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* ===========================
+     Sidebar
+  =========================== */
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ===========================
+     Radius
+  =========================== */
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* ===========================
+     Spacing
+  =========================== */
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4.5rem;
+
+  /* ===========================
+     Typography
+  =========================== */
+
+  --text-display: 5rem;
+  --text-hero: 3.5rem;
+  --text-h1: 3rem;
+  --text-h2: 2.25rem;
+  --text-h3: 1.75rem;
+  --text-h4: 1.5rem;
+  --text-h5: 1.25rem;
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-caption: 0.75rem;
+
+  /* ===========================
+     Blur
+  =========================== */
+
+  --blur-card: 18px;
+  --blur-nav: 20px;
+  --blur-modal: 30px;
+  --blur-glow: 50px;
+
+  /* Line Heights */
+
+  --leading-display: 1;
+  --leading-hero: 1.11;
+  --leading-heading: 1.15;
+  --leading-body: 1.7;
+  --leading-small: 1.5;
+
+  /* Font Weights */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 800;
+
+  --font-script: var(--font-script);
+}
+:root {
+  /* ===========================
+     Backgrounds
+  =========================== */
+
+  --background: #050807;
+  --surface: #0a0f0d;
+  --surface-secondary: #0d1512;
+  --surface-elevated: #111c17;
+
+  /* ===========================
+     Text
+  =========================== */
+
+  --foreground: #f8fafc;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --text-accent: #22c55e;
+  --text-neon: #4ade80;
+
+  /* ===========================
+     Cards
+  =========================== */
+
+  --card: rgba(17, 28, 23, 0.45);
+  --card-foreground: #f8fafc;
+
+  --popover: rgba(17, 28, 23, 0.9);
+  --popover-foreground: #f8fafc;
+
+  /* ===========================
+     Brand
+  =========================== */
+
+  --primary: #2e7d32;
+  --primary-foreground: #f8fafc;
+
+  --accent: #22c55e;
+  --accent-foreground: #04140d;
+
+  --brand-dark-green: #14532d;
+  --neon-glow: #4ade80;
+
+  /* ===========================
+     Interactive
+  =========================== */
+
+  --hover: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.06);
+  --ring: #22c55e;
+
+  /* ===========================
+     Status
+  =========================== */
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+
+  /* ===========================
+     Charts
+  =========================== */
+
+  --chart-1: #2e7d32;
+  --chart-2: #22c55e;
+  --chart-3: #4ade80;
+  --chart-4: #14532d;
+  --chart-5: #3b82f6;
+
+  /* ===========================
+     Radius
+  =========================== */
+
+  --radius: 1.5rem;
+
+  /* ===========================
+     Sidebar
+  =========================== */
+
+  --sidebar: #08100d;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: #2e7d32;
+  --sidebar-primary-foreground: #f8fafc;
+  --sidebar-accent: #111c17;
+  --sidebar-accent-foreground: #f8fafc;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #22c55e;
+
+  /* ===========================
+     Fonts
+  =========================== */
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Caveat", cursive;
+}
+html {
+  scroll-behavior: smooth;
+}
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+
+  /* Shared button base — repeated in each variant below instead of
+     @apply-ing a custom `.btn` class, because Tailwind v4's @apply
+     only resolves real utilities, not other custom classes. */
+  .nav-link {
+    @apply relative inline-flex items-center
+         text-sm font-medium text-text-secondary
+         transition-all duration-300;
+  }
+
+  .nav-link:hover {
+    @apply text-text-primary;
+  }
+
+  /* Animated underline */
+  .nav-link::after {
+    content: "";
+    @apply absolute left-1/2 -bottom-2 h-[2px] w-0
+         -translate-x-1/2 rounded-full
+         bg-primary transition-all duration-300;
+  }
+
+  /* .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-ful;
+  } */
+
+  .nav-link.active {
+    @apply text-text-primary;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+         rounded-full px-6 py-2.5
+         font-semibold text-sm
+         transition-all duration-200
+         active:scale-95
+         disabled:pointer-events-none disabled:opacity-50
+         bg-primary text-primary-foreground
+         shadow-[0_0_20px_rgba(34,197,94,0.35)]
+         hover:bg-accent
+         hover:shadow-[0_0_35px_rgba(74,222,128,0.55)];
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+         rounded-full px-5 md:px-6 py-2.5
+         font-semibold text-xs md:text-sm
+         transition-all duration-200
+         active:scale-95
+         disabled:pointer-events-none disabled:opacity-50
+         bg-card/45 text-foreground
+         border border-white/10
+         backdrop-blur-[18px]
+         hover:bg-hover/60
+         hover:border-white/20;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+         px-2 py-1
+         text-sm font-medium
+         transition-all duration-200
+         active:scale-95
+         disabled:pointer-events-none disabled:opacity-50
+         bg-transparent text-accent
+         hover:text-neon
+         hover:gap-3;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+         rounded-full px-6 py-2.5
+         font-semibold text-sm
+         transition-all duration-200
+         active:scale-95
+         disabled:pointer-events-none disabled:opacity-50
+         border border-primary text-primary
+         bg-transparent
+         hover:bg-primary/10
+         hover:border-neon;
+  }
+  .btn-glow {
+    @apply inline-flex items-center justify-center gap-2
+         rounded-full px-5 py-2.5 md:px-7 md:py-3
+         font-semibold text-xs md:text-sm
+         transition-all duration-200
+         active:scale-95
+         disabled:pointer-events-none disabled:opacity-50
+         bg-primary text-primary-foreground
+         shadow-[0_0_25px_rgba(34,197,94,0.5)]
+         hover:shadow-[0_0_50px_rgba(74,222,128,0.8)]
+         hover:-translate-y-0.5;
+  }
+  .btn-icon {
+    @apply inline-flex items-center justify-center gap-2
+         h-11 w-11 rounded-full
+         font-semibold text-sm
+         transition-all duration-200
+         active:scale-95
+         disabled:pointer-events-none disabled:opacity-50
+         bg-card/40
+         border border-white/10
+         backdrop-blur-lg
+         hover:bg-primary/20
+         hover:border-primary
+         hover:rotate-6;
+  }
+  .btn-gradient {
+    @apply inline-flex items-center justify-center gap-2
+         rounded-full px-6 py-2.5
+         font-semibold text-sm
+         transition-all duration-200
+         active:scale-95
+         disabled:pointer-events-none disabled:opacity-50
+         text-white
+         bg-gradient-to-r from-primary to-neon
+         hover:brightness-110
+         hover:shadow-[0_0_35px_rgba(74,222,128,0.55)];
+  }
+  .btn-project {
+    @apply inline-flex items-center justify-center gap-2
+         px-5 py-2
+         font-semibold text-sm
+         transition-all duration-200
+         active:scale-95
+         disabled:pointer-events-none disabled:opacity-50
+         bg-transparent text-accent
+         hover:gap-3
+         hover:text-neon;
+  }
+  .btn-chip {
+    @apply inline-flex items-center justify-center gap-2
+         rounded-full px-4 py-1.5
+         font-semibold text-xs
+         transition-all duration-200
+         active:scale-95
+         disabled:pointer-events-none disabled:opacity-50
+         bg-card text-text-secondary
+         border border-white/5
+         hover:bg-primary/20
+         hover:text-white;
+  }
+  .btn-chip-active {
+    @apply bg-primary text-white border-primary;
+  }
+  .btn-download {
+    @apply inline-flex items-center justify-center gap-2
+         rounded-full px-6 py-2.5
+         font-semibold text-sm
+         transition-all duration-200
+         active:scale-95
+         disabled:pointer-events-none disabled:opacity-50
+         bg-primary text-white
+         hover:gap-3
+         hover:shadow-[0_0_30px_rgba(34,197,94,.5)];
+  }
+  .btn-fab {
+    @apply fixed bottom-8 right-8
+         h-14 w-14 rounded-full
+         transition-all duration-200
+         active:scale-95
+         disabled:pointer-events-none disabled:opacity-50
+         bg-primary text-white
+         shadow-[0_0_30px_rgba(34,197,94,.45)]
+         hover:-translate-y-1
+         hover:shadow-[0_0_45px_rgba(74,222,128,.6)];
+  }
+  .btn-link {
+    @apply inline-flex items-center gap-1
+         text-sm text-accent
+         transition-all duration-200
+         hover:text-neon
+         hover:gap-2;
+  }
+
+  .heading-hero {
+    @apply text-text-primary font-bold tracking-tight text-h3 md:text-hero leading-8.75 md:leading-hero;
+  }
+
+  .heading-1 {
+    @apply text-text-primary font-bold tracking-tight;
+    font-size: var(--text-h1);
+    line-height: var(--leading-heading);
+  }
+  .heading-2 {
+    @apply text-text-primary font-bold;
+    font-size: var(--text-h2);
+    line-height: var(--leading-heading);
+  }
+
+  .heading-3 {
+    @apply text-text-primary font-semibold;
+    font-size: var(--text-h3);
+    line-height: var(--leading-heading);
+  }
+  .heading-4 {
+    @apply text-text-primary font-semibold;
+    font-size: var(--text-h4);
+  }
+  .heading-5 {
+    @apply text-text-secondary font-semibold;
+    font-size: var(--text-h5);
+  }
+  .text-body-lg {
+    @apply text-text-secondary font-normal text-body! md:text-body-lg!;
+    line-height: var(--leading-body);
+  }
+  .text-body {
+    @apply text-text-secondary font-normal;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+  .text-small {
+    @apply text-text-muted font-medium;
+    font-size: var(--text-small);
+    line-height: var(--leading-small);
+  }
+  .text-caption {
+    @apply text-text-muted;
+    font-size: var(--text-caption);
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-accent to-neon bg-clip-text text-transparent;
+  }
+  .text-glow {
+    @apply text-neon;
+    text-shadow:
+      0 0 10px rgba(74, 222, 128, 0.4),
+      0 0 20px rgba(74, 222, 128, 0.3);
+  }
+
+  .project-card {
+    @apply relative overflow-hidden rounded-[20px] md:rounded-[28px]
+         border border-border
+        p-3 md:p-5
+         backdrop-blur-[22px]
+         transition-all duration-500;
+
+    background: linear-gradient(
+      180deg,
+      rgba(34, 197, 94, 0.1) 0%,
+      rgba(17, 28, 23, 0.95) 35%,
+      rgba(7, 17, 12, 1) 100%
+    );
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 10px 35px rgba(0, 0, 0, 0.45),
+      0 0 30px rgba(34, 197, 94, 0.05);
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 20px 60px rgba(0, 0, 0, 0.55),
+      0 0 45px rgba(34, 197, 94, 0.18);
+  }
+  .project-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(
+      circle at 20% 0%,
+      rgba(74, 222, 128, 0.12),
+      transparent 55%
+    );
+
+    pointer-events: none;
+  }
+  .project-image {
+    @apply relative mb-5 h-35 md:h-40 overflow-hidden rounded-[12px] md:rounded-[20px]
+         border border-white/10;
+  }
+
+  .project-image::before {
+    content: "";
+
+    position: absolute;
+    inset: -25px;
+
+    background: radial-gradient(
+      circle,
+      rgba(34, 197, 94, 0.18),
+      transparent 70%
+    );
+
+    filter: blur(35px);
+
+    z-index: -1;
+  }
+  .tech-pill {
+    @apply rounded-full
+         border border-white/8
+         bg-card/60
+         px-3 py-1
+         text-[12px] font-medium
+         text-text-secondary
+         backdrop-blur-md
+         transition-all duration-300;
+  }
+
+  .tech-pill:hover {
+    @apply border-accent/25 text-text-primary;
+
+    box-shadow: 0 0 18px rgba(34, 197, 94, 0.15);
+  }
+  .project-link {
+    @apply inline-flex items-center gap-2
+         text-sm font-semibold
+         text-text-accent
+         transition-all duration-300;
+  }
+
+  .project-link:hover {
+    @apply gap-3 text-neon;
+  }
+}
+@layer components {
+  .stats-glass {
+    @apply w-fit
+           rounded-[28px]
+           border border-border
+           bg-card/70
+           px-2 py-2
+           backdrop-blur-[22px]
+           transition-all duration-300
+           hover:border-accent/30;
+
+    box-shadow:
+      0 12px 50px rgba(0, 0, 0, 0.45),
+      0 0 35px rgba(34, 197, 94, 0.08);
+  }
+
+  .stats-glass:hover {
+    box-shadow:
+      0 20px 70px rgba(0, 0, 0, 0.55),
+      0 0 50px rgba(74, 222, 128, 0.18);
+  }
+
+  .stats-item-wrap {
+    @apply flex items-center gap-3
+          px-2.5 md:px-5 py-4
+           border-r border-border/40
+           transition-all duration-300
+           hover:-translate-y-1;
+  }
+
+  .stats-item-wrap:last-child {
+    @apply border-r-0;
+  }
+
+  .stats-icon {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center
+           rounded-full
+           bg-accent/10
+           text-accent
+           transition-all duration-300;
+
+    box-shadow: 0 0 0px rgba(74, 222, 128, 0);
+  }
+
+  .stats-item-wrap:hover .stats-icon {
+    @apply bg-accent/20;
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.35);
+  }
+
+  .stats-item {
+    @apply space-y-0.5;
+  }
+
+  .stats-number {
+    @apply text-[17px] md:text-[22px]
+           font-bold
+          leading-[20px] md:leading-none
+           text-text-primary;
+  }
+
+  .stats-label {
+    @apply text-[10px] sm:text-small
+           text-text-secondary
+           whitespace-nowrap;
+  }
+  .script-glow {
+    @apply text-[56px] leading-[0.78] font-normal;
+    font-family: var(--font-script);
+    background: linear-gradient(
+      180deg,
+      #86efac 0%,
+      #4ade80 35%,
+      #22c55e 70%,
+      #14532d 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow:
+      0 0 8px rgba(74, 222, 128, 0.35),
+      0 0 18px rgba(34, 197, 94, 0.22);
+  }
+}
+@keyframes ring-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.9;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes glow-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-14px, 10px) scale(1.08);
+    opacity: 1;
+  }
+}
+
+.ring-1 {
+  animation: ring-breathe 9s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.ring-2 {
+  animation: ring-breathe 12s ease-in-out infinite;
+  animation-delay: 1.5s;
+  transform-origin: center;
+}
+
+.ring-3 {
+  animation: ring-breathe 15s ease-in-out infinite;
+  animation-delay: 3s;
+  transform-origin: center;
+}
+
+.glow-drift {
+  animation: glow-drift 14s ease-in-out infinite;
 }
