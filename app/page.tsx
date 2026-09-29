@@ -2,6 +2,9 @@
 
 import Navbar from "@/components/Navbar";
 import About from "@/components/sections/About";
+import Contact from "@/components/sections/Contact";
+import Experience from "@/components/sections/Experience";
+import Footer from "@/components/sections/Footer";
 import Home from "@/components/sections/Home";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
@@ -18,7 +21,10 @@ export default function Portfolio() {
       <About />
 
       <Projects />
+      <Experience />
       <Skills />
+      <Contact />
+      <Footer />
     </div>
   );
 }

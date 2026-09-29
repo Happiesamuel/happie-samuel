@@ -188,13 +188,13 @@ export default function Home() {
 
             <motion.div
               variants={pillsContainer}
-              className="mt-8 flex flex-wrap gap-3 items-center justify-center"
+              className="mt-8  flex flex-wrap gap-3 items-center justify-center"
             >
               {skills.map(({ name, icon: Icon }) => (
                 <motion.span
                   key={name}
                   variants={pillItem as Variants}
-                  className="cursor-pointer flex items-center gap-2 rounded-full border border-border bg-card/40 px-4 py-2 text-caption md:text-small text-text-secondary backdrop-blur-md"
+                  className="cursor-pointer flex items-center gap-2 rounded-full  border border-border bg-card px-4 py-2 text-caption md:text-small text-text-secondary backdrop-blur-xl"
                   whileHover={{
                     y: -4,
                     borderColor: "rgba(34,197,94,0.3)",

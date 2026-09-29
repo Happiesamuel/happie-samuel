@@ -82,7 +82,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative pt-32 pb-8 h-full overflow-hidden bg-[#050807] px-12"
+      className="relative pt-32  pb-8 h-full overflow-hidden bg-[#050807] px-12"
     >
       <div className="absolute inset-0 bg-[#050807]" />
 
@@ -111,7 +111,7 @@ export default function About() {
             "radial-gradient(circle at center 75%, transparent 55%, rgba(0,0,0,0.35) 100%)",
         }}
       />
-      <div className="relative z-10 flex md:flex-row flex-col items-center justify-between">
+      <div className="relative mx-auto max-w-7xl z-10 flex md:flex-row flex-col items-center justify-between">
         <div className="max-w-[550px]">
           <Tag text="About Me" Icon={FaRegUser} />
           <motion.h1
@@ -119,7 +119,7 @@ export default function About() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.4 }}
-            className="heading-2 max-w-125 md:max-w-225 mt-5 flex flex-wrap gap-x-[0.3em]"
+            className="heading-3 md:heading-2 max-w-125 md:max-w-225 mt-5 flex flex-wrap gap-x-[0.3em]"
           >
             {headingWords.map(({ text, gradient }) => (
               <span key={text} className="inline-block overflow-hidden pb-1">
@@ -138,7 +138,7 @@ export default function About() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.4 }}
-            className="text-body mt-3 md:mt-4 text-text-secondary"
+            className="text-small md:text-body  mt-3 md:mt-4 text-text-secondary"
           >
             I&apos;m Happie Samuel, a passionate Frontend and Mobile Developer
             with a strong focus on building clean, scalable and user-friendly

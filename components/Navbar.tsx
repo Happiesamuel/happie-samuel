@@ -1,6 +1,7 @@
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import EasterEgg, { useEasterEgg } from "./sections/EasterEgg";
 
 const links = [
   { title: "Home", link: "#home" },
@@ -24,7 +25,7 @@ const linkItem = {
 export default function Navbar() {
   const [activeId, setActiveId] = useState<string>("home");
   const [scrolled, setScrolled] = useState(false);
-
+  const { isOpen, setIsOpen, trigger } = useEasterEgg();
   // Active section tracking (unchanged)
   useEffect(() => {
     const sections = links
@@ -76,8 +77,14 @@ export default function Navbar() {
         transition={{ duration: 0.3, ease: "easeOut" }}
         className="flex items-center justify-between rounded-full border border-border bg-card/70 px-6 backdrop-blur-[20px]"
       >
-        {/* Logo */}
-        <Link href="/" className="group flex items-center gap-3">
+        <Link
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            trigger();
+          }}
+          className="group flex items-center gap-3"
+        >
           <div
             className="
               flex h-10 w-10 items-center justify-center
@@ -106,6 +113,8 @@ export default function Navbar() {
             Happie
           </span>
         </Link>
+
+        <EasterEgg isOpen={isOpen} onClose={() => setIsOpen(false)} />
 
         {/* Desktop Links */}
         <motion.div

@@ -61,12 +61,12 @@ export function SkillCategoryBlock({
             key={name}
             variants={cardItem as unknown as Variants}
             whileHover={{
-              y: -4,
+              y: -8,
               borderColor: "rgba(34,197,94,0.3)",
               boxShadow: "0 0 20px rgba(34,197,94,0.18)",
             }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="flex w-24 cursor-pointer flex-col items-center justify-center gap-2 rounded-[14px] border border-accent/10 bg-card/40 py-4 backdrop-blur-md"
+            className="flex w-24 project-card p-0 cursor-pointer flex-col items-center justify-center gap-2 rounded-[14px] border border-accent/10 bg-card/40 py-4 backdrop-blur-md"
           >
             <Icon width={22} height={22} />
             <span className="text-center text-[11px] text-text-secondary">

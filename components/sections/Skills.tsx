@@ -3,49 +3,13 @@ import { FaArrowRightLong, FaCode } from "react-icons/fa6";
 import Tag from "../utils/Tag";
 import { skillCategories } from "@/lib/skills";
 import { rows, SkillCategoryBlock } from "../utils/SkillsCard";
+import TextHeader from "../utils/TextHeader";
 
 const categoryContainer = {
   hidden: {},
   show: { transition: { staggerChildren: 0.15 } },
 };
 
-const container = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.12 },
-  },
-};
-
-const headingWords = [
-  { text: "Technology" },
-  { text: "I" },
-  { text: "Work" },
-  { text: "With" },
-];
-
-const wordContainer = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
-};
-
-const wordItem = {
-  hidden: { y: "110%", opacity: 0 },
-  show: {
-    y: "0%",
-    opacity: 1,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const paragraphItem = {
-  hidden: { opacity: 0, y: 16, filter: "blur(6px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.7, ease: "easeOut", delay: 0.6 },
-  },
-};
 export default function Skills() {
   return (
     <section
@@ -109,7 +73,7 @@ export default function Skills() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-none absolute -right-[140px] top-[65%] hidden h-[460px] w-[460px] -translate-y-1/2 lg:block xl:-right-[100px]"
+        className="pointer-events-none  absolute -right-[140px] top-[65%] hidden h-[460px] w-[460px] -translate-y-1/2 lg:block xl:right-[6vw]"
       >
         {/* Outer faint rings, each breathing at its own pace */}
         <motion.div
@@ -152,58 +116,30 @@ export default function Skills() {
         />
 
         {/* Text sits on the visible (left) half, since the right half is clipped */}
-        <div className="absolute inset-y-0 left-0 flex w-[62%] flex-col items-center justify-center gap-3 pl-6 text-center">
+        <div className="absolute inset-y-0 right-7 flex w-[62%] flex-col items-center justify-center gap-3 pl-6 text-center">
           <p className="heading-4 leading-snug text-text-primary">
             Always learning,
             <br />
             always building.
           </p>
-          <FaArrowRightLong className="ml-auto mr-4 text-accent drop-shadow-[0_0_8px_rgba(74,222,128,0.8)]" />
+          <FaArrowRightLong className="ml-auto mr-8  text-accent drop-shadow-[0_0_8px_rgba(74,222,128,0.8)]" />
         </div>
       </motion.div>
 
       {/* Your content */}
-      <div className="relative z-10">
-        <div className="max-w-[550px]">
+      <div className="relative z-10  mx-auto max-w-7xl ">
+        <TextHeader
+          headingWords={[
+            { text: "Technology" },
+            { text: "I" },
+            { text: "Work" },
+            { text: "With" },
+          ]}
+          paragraph="  I use modern tools and technologies to build fast, scalable and
+            user-friendly applications."
+        >
           <Tag text="My Skills" Icon={FaCode} />
-          <motion.h1
-            variants={wordContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.4 }}
-            className="heading-2 max-w-125 md:max-w-225 mt-5 flex flex-wrap gap-x-[0.3em]"
-          >
-            {headingWords.map(({ text }) => (
-              <span key={text} className="inline-block overflow-hidden pb-1">
-                <motion.span
-                  variants={wordItem as unknown as Variants}
-                  className={`inline-block `}
-                >
-                  {text}
-                </motion.span>
-              </span>
-            ))}
-          </motion.h1>
-
-          <motion.p
-            variants={paragraphItem as Variants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.4 }}
-            className="text-body mt-3 md:mt-4 text-text-secondary"
-          >
-            I use modern tools and technologies to build fast, scalable and
-            user-friendly applications.
-          </motion.p>
-
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            className="grid grid-cols-2 gap-x-8 gap-y-6 mt-3 md:mt-6 "
-          ></motion.div>
-        </div>
+        </TextHeader>
 
         <motion.div
           variants={categoryContainer}
@@ -215,7 +151,11 @@ export default function Skills() {
           {rows.map((row, i) => (
             <div
               key={i}
-              className={row.length > 1 ? "flex items-start gap-8" : ""}
+              className={
+                row.length > 1
+                  ? "flex md:flex-row flex-col items-start gap-5 md:gap-8"
+                  : ""
+              }
             >
               {row.map((key) => (
                 <SkillCategoryBlock

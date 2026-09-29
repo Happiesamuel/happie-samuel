@@ -13,6 +13,7 @@ import { motion, Variants, AnimatePresence } from "framer-motion";
 import { projects } from "@/lib/utils";
 
 import Link from "next/link";
+import TextHeader from "../utils/TextHeader";
 export type ProjectCategory = "web" | "mobile" | "full-stack" | "all";
 const PAGE_SIZE = 6;
 
@@ -60,32 +61,6 @@ export default function Projects() {
     },
   };
 
-  const headingWords = [{ text: "Featured" }, { text: "Projects" }];
-
-  const wordContainer = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
-  };
-
-  const wordItem = {
-    hidden: { y: "110%", opacity: 0 },
-    show: {
-      y: "0%",
-      opacity: 1,
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-    },
-  };
-
-  const paragraphItem = {
-    hidden: { opacity: 0, y: 16, filter: "blur(6px)" },
-    show: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: { duration: 0.7, ease: "easeOut", delay: 0.6 },
-    },
-  };
-
   const [activeTag, setActiveTag] = useState<ProjectCategory>("all");
   const [page, setPage] = useState(1);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -118,81 +93,46 @@ export default function Projects() {
       className="relative h-full pb-8 pt-32   overflow-hidden bg-[#050807] px-3 md:px-12"
     >
       <div className="absolute inset-0 bg-[#050807]" />
-
-      <div className="absolute top-0 left-0 right-0 h-72 bg-gradient-to-b from-[#050807]/40 via-[#050807]/80 to-[#050807]" />
-
-      <div
-        className="absolute right-[-120px] top-[180px] h-[720px] w-[720px] rounded-full blur-[140px]"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(34,197,94,0.18) 0%, rgba(34,197,94,0.08) 38%, transparent 72%)",
-        }}
-      />
-
-      <div
-        className="absolute right-[180px] top-[320px] h-[340px] w-[340px] rounded-full blur-[90px]"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(74,222,128,0.10) 0%, transparent 70%)",
-        }}
-      />
-
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "radial-gradient(circle at center 75%, transparent 55%, rgba(0,0,0,0.35) 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, #000 180px, #000 100%)",
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, #000 180px, #000 100%)",
         }}
-      />
-
-      <div className="relative z-10 ">
-        <div className="flex flex-col pb-8 md:flex-row items-center justify-between">
-          <div className="max-w-[550px]">
+      >
+        <div
+          className="absolute -left-[160px] top-[120px] h-[600px] w-[600px] rounded-full blur-[140px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(34,197,94,0.16) 0%, rgba(34,197,94,0.07) 40%, transparent 72%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(0,0,0,0.4), transparent 30%)",
+          }}
+        />
+      </div>
+      <div className="relative z-10  mx-auto max-w-7xl ">
+        <div className="flex flex-col gap-4 pb-8 md:flex-row items-center justify-between">
+          <TextHeader
+            headingWords={[{ text: "Featured" }, { text: "Projects" }]}
+            paragraph="  Here are some of the projects I've built, ranging from web
+              platforms to mobile applications."
+          >
             <Tag text="My Projects" Icon={FaBookAtlas} />
-            <motion.h1
-              variants={wordContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.4 }}
-              className="heading-2 max-w-125 md:max-w-225 mt-5 flex flex-wrap gap-x-[0.3em]"
-            >
-              {headingWords.map(({ text }) => (
-                <span key={text} className="inline-block overflow-hidden pb-1">
-                  <motion.span
-                    variants={wordItem as unknown as Variants}
-                    className={`inline-block `}
-                  >
-                    {text}
-                  </motion.span>
-                </span>
-              ))}
-            </motion.h1>
+          </TextHeader>
 
-            <motion.p
-              variants={paragraphItem as Variants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.4 }}
-              className="text-body mt-3 md:mt-4 text-text-secondary"
-            >
-              Here are some of the projects I&apos;ve built, ranging from web
-              platforms to mobile applications.
-            </motion.p>
-
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
-              className="grid grid-cols-2 gap-x-8 gap-y-6 mt-3 md:mt-6 "
-            ></motion.div>
-          </div>
           <motion.div
             variants={tabsContainer as unknown as Variants}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.6 }}
-            className="flex items-center gap-1 rounded-full border border-border bg-card/60 p-1 backdrop-blur-md"
+            className="flex items-center gap-1 rounded-full border border-border bg-card/60 p-1 backdrop-blur-md "
           >
             {tags.map((tag) => {
               const isActive = activeTag === tag.slug;

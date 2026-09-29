@@ -504,10 +504,10 @@ html {
          border border-border
         p-3 md:p-5
          backdrop-blur-[22px]
-         transition-all duration-500;
+         transition-all duration-200;
 
     background: linear-gradient(
-      180deg,
+      135deg,
       rgba(34, 197, 94, 0.1) 0%,
       rgba(17, 28, 23, 0.95) 35%,
       rgba(7, 17, 12, 1) 100%
