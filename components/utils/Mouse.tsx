@@ -6,7 +6,7 @@ export default function Mouse() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2, duration: 0.6 }}
-      className="absolute -bottom-12 left-1/2 flex -translate-x-1/2 z-50 flex-col items-center gap-2.5"
+      className="absolute bottom-0 left-1/2 flex -translate-x-1/2 z-50 flex-col items-center gap-2.5"
     >
       {/* Mouse */}
       <div

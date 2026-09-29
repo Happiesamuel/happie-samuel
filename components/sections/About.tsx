@@ -82,7 +82,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative pt-32  pb-8 h-full overflow-hidden bg-[#050807] px-12"
+      className="relative pt-32  pb-8 h-full overflow-hidden bg-[#050807] px-3 md:px-12"
     >
       <div className="absolute inset-0 bg-[#050807]" />
 
@@ -111,7 +111,7 @@ export default function About() {
             "radial-gradient(circle at center 75%, transparent 55%, rgba(0,0,0,0.35) 100%)",
         }}
       />
-      <div className="relative mx-auto max-w-7xl z-10 flex md:flex-row flex-col items-center justify-between">
+      <div className="relative mx-auto max-w-7xl z-10 gap-10 flex md:flex-row flex-col items-center justify-between">
         <div className="max-w-[550px]">
           <Tag text="About Me" Icon={FaRegUser} />
           <motion.h1
@@ -151,7 +151,7 @@ export default function About() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
-            className="grid grid-cols-2 gap-x-8 gap-y-6 mt-3 md:mt-6 "
+            className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mt-3 md:mt-6 "
           >
             {obj.map((o) => {
               const Icon = o.icon;
@@ -159,12 +159,12 @@ export default function About() {
                 <motion.div
                   key={o.text}
                   variants={item as Variants}
-                  className="flex items-start gap-3"
+                  className="flex items-start gap-3 "
                 >
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 6 }}
                     transition={{ type: "spring", stiffness: 300, damping: 12 }}
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full backdrop-blur-lg bg-accent/5 text-accent shadow-[0_0_0px_rgba(74,222,128,0)] transition-shadow duration-300 hover:bg-accent/20 hover:shadow-[0_0_16px_rgba(74,222,128,0.35)]"
+                    className="flex project-card p-0 h-10 w-10 border border-accent/10 shrink-0 items-center justify-center rounded-full backdrop-blur-lg bg-accent/5 text-accent shadow-[0_0_0px_rgba(74,222,128,0)] transition-shadow duration-300 hover:bg-accent/20 hover:shadow-[0_0_16px_rgba(74,222,128,0.35)]"
                   >
                     <Icon size={16} />
                   </motion.div>
@@ -202,7 +202,7 @@ export default function About() {
         </div>
         <div className="relative flex justify-center items-center w-full">
           {/* Glow behind portrait */}
-          <div className="absolute h-[420px] w-[420px] rounded-full bg-primary/20 blur-[120px]" />
+          <div className="absolute size-[420px]  rounded-full bg-primary/20 blur-[120px]" />
 
           {/* Decorative script text */}
 
@@ -214,7 +214,7 @@ export default function About() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="absolute bottom-4 -right-9 size-[350px] rounded-lg border border-accent/10 bg-card/40 backdrop-blur-md"
+              className="absolute bottom-4 -right-5 sm:-right-9 size-[250px] sm:size-[350px] rounded-lg border border-accent/10 bg-card/40 backdrop-blur-md"
             />
 
             {/* Front box */}
@@ -223,7 +223,7 @@ export default function About() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative flex items-center justify-center size-[350px] rounded-lg border border-accent/10 bg-card/80 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
+              className="relative flex items-center justify-center size-[250px] sm:size-[350px] rounded-lg border border-accent/10 bg-card/80 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
             >
               <div className="relative size-[80%] overflow-hidden rounded-sm border border-border/40">
                 <Image
@@ -238,9 +238,9 @@ export default function About() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="absolute -right-10 top-0 -rotate-6"
+              className="absolute -right-6 sm:-right-10 top-0 -rotate-6"
             >
-              <h2 className="script-glow text-4xl">
+              <h2 className="script-glow text-2xl sm:text-4xl">
                 Code
                 <br />
                 Build
@@ -248,20 +248,6 @@ export default function About() {
                 Improve
               </h2>
             </motion.div>
-            {/* <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="absolute top-16 right-0 font-serif italic text-2xl text-accent leading-tight text-right"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              Code.
-              <br />
-              Build.
-              <br />
-              Improve.
-            </motion.p> */}
           </div>
 
           <motion.div
@@ -269,7 +255,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="absolute -bottom-6 h-36 w-75 right-0 flex flex-col   rounded-md border border-border px-6 py-5 bg-card/80 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
+            className="absolute -bottom-6 h-33 sm:h-36 w-60 sm:w-75 right-0 flex flex-col   rounded-md border border-border px-5 py-4 sm:px-6 sm:py-5 bg-card/80 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
           >
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 shrink-0 flex items-center  justify-center overflow-hidden rounded-full border border-accent/30">
@@ -286,7 +272,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className="mt-5 flex items-center gap-5">
+            <div className="mt-2 sm:mt-5 flex items-center gap-5">
               {[FaGithub, FaXTwitter, FaLinkedinIn, MdOutlineMail].map(
                 (Icon, i) => (
                   <motion.a
