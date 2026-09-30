@@ -1,20 +1,12 @@
 import type { Metadata } from "next";
-import { Caveat, Geist, Inter } from "next/font/google";
-import "./globals.css";
+import { Inter } from "next/font/google";
+import "../globals.css";
 import { cn } from "@/lib/utils";
 import { CursorGlow } from "@/components/utils/CursorGlow";
-import ClientRoot from "@/components/ClientRoot";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/sections/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const caveat = Caveat({
-  subsets: ["latin"],
-  variable: "--font-script",
-  weight: ["700"],
-});
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Happie Samuel",
@@ -33,12 +25,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         inter.variable,
       )}
     >
-      <ClientRoot>
-        <body className="min-h-full flex flex-col">
-          <CursorGlow />
+      <body className="min-h-full flex flex-col">
+        <CursorGlow />
+        <div className="max-w-[120rem] mx-auto w-full">
+          <Navbar />
           {children}
-        </body>
-      </ClientRoot>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

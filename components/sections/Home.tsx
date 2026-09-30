@@ -4,7 +4,7 @@ import {
   Typescript,
   Flutter,
 } from "@thesvg/react";
-
+import { FiDownload } from "react-icons/fi";
 import { FolderKanban, Clock, Trophy, Smartphone } from "lucide-react";
 import { TbDeviceImacCode } from "react-icons/tb";
 import Tag from "../utils/Tag";
@@ -182,7 +182,7 @@ export default function Home() {
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
               >
-                Download CV
+                Download CV <FiDownload className="text-accent" />
               </motion.button>
             </motion.div>
 

@@ -1,15 +1,16 @@
+"use client";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import EasterEgg, { useEasterEgg } from "./sections/EasterEgg";
 
 const links = [
-  { title: "Home", link: "#home" },
-  { title: "About", link: "#about" },
-  { title: "Projects", link: "#projects" },
-  { title: "Experience", link: "#experience" },
-  { title: "Skills", link: "#skills" },
-  { title: "Contact", link: "#contact" },
+  { title: "Home", link: "/#home" },
+  { title: "About", link: "/#about" },
+  { title: "Projects", link: "/#projects" },
+  { title: "Experience", link: "/#experience" },
+  { title: "Skills", link: "/#skills" },
+  { title: "Contact", link: "/#contact" },
 ];
 
 const linksContainer = {
@@ -29,7 +30,7 @@ export default function Navbar() {
   // Active section tracking (unchanged)
   useEffect(() => {
     const sections = links
-      .map((l) => document.querySelector(l.link))
+      .map((l) => document.querySelector(l.link.slice(1)))
       .filter((el): el is Element => el !== null);
 
     if (sections.length === 0) return;
@@ -124,7 +125,7 @@ export default function Navbar() {
           className="hidden items-center gap-2 md:flex"
         >
           {links.map((l) => {
-            const id = l.link.replace("#", "");
+            const id = l.link.replace("/#", "");
             const isActive = activeId === id;
 
             return (

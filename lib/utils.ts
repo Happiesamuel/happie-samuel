@@ -10,10 +10,12 @@ import {
   Appwrite,
   Expo,
   ShadcnUi,
+  React,
+  Dicebear,
 } from "@thesvg/react";
 import { SvgIconComponent } from "@thesvg/react/types";
 import { IconType } from "react-icons";
-
+import { GiThreeLeaves } from "react-icons/gi";
 export interface Project {
   id: number;
   slug: string;
@@ -56,16 +58,16 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    slug: "smart-farm",
-    name: "Smart Farm",
+    slug: "smart-farm-management-system",
+    name: "Smart Farm Management System",
     tagline: "Multi-workspace Farm Management System",
     type: "Web Application",
     categories: ["web", "full-stack"],
 
     icon: {
-      name: FaLeaf,
-      color: "#22c55e",
-      bg: "rgba(34,197,94,0.15)",
+      name: GiThreeLeaves,
+      color: "#ffffff",
+      bg: "#22c55e",
     },
 
     shortDescription:
@@ -77,24 +79,24 @@ export const projects: Project[] = [
       { name: "Next.js", icon: Nextdotjs },
       { name: "React", icon: ReactIcon },
       { name: "TypeScript", icon: Typescript },
-      { name: "Tailwind", icon: Tailwindcss },
+      { name: "Tailwind CSS", icon: Tailwindcss },
       { name: "TanStack Query", icon: ReactQuery },
       { name: "Appwrite", icon: Appwrite },
     ],
 
     links: {
-      live: "https://your-smartfarm-demo.com",
-      github: "https://github.com/your-username/smart-farm",
+      live: "https://smart-farm-managementt.vercel.app",
+      github: "https://github.com/Happiesamuel/smart-farm-management",
     },
 
     images: {
-      cardImage: "/smart-farm-card.jpeg",
-      mainImage: "/projects/smart-farm/main.png",
+      cardImage: "/smart-farm/smart-farm-card.jpeg",
+      mainImage: "/smart-farm/smart-farm-main.jpeg",
       screenshots: [
-        "/projects/smart-farm/screenshot-1.png",
-        "/projects/smart-farm/screenshot-2.png",
-        "/projects/smart-farm/screenshot-3.png",
-        "/projects/smart-farm/screenshot-4.png",
+        "/smart-farm/smart-1.png",
+        "/smart-farm/smart-2.png",
+        "/smart-farm/smart-3.png",
+        "/smart-farm/smart-4.png",
       ],
     },
 
@@ -107,8 +109,8 @@ export const projects: Project[] = [
     ],
 
     highlights: [
-      { value: "6+", label: "Key Modules" },
-      { value: "3+", label: "Months Development" },
+      { value: "9+", label: "Key Modules" },
+      { value: "2+", label: "Months Development" },
       { value: "100%", label: "Responsive Design" },
     ],
 
@@ -127,34 +129,38 @@ export const projects: Project[] = [
 
     icon: {
       name: MdRestaurant,
-      color: "#f97316",
-      bg: "rgba(249,115,22,0.15)",
+      color: "#ffffff",
+      bg: "#f97316",
     },
 
     shortDescription:
       "Food ordering app with real-time tracking and push notifications.",
     description:
-      "A cross-platform food ordering app that lets users browse restaurants, customise meals, place orders and follow their delivery live on a map, with push notifications for every order update.",
+      "A modern food ordering app built with React Native and Expo, featuring real-time order tracking, push notifications, and Users authentication and authorization.",
 
     techStack: [
       { name: "React Native", icon: ReactIcon },
       { name: "Expo", icon: Expo },
+      { name: "TypeScipt", icon: Typescript },
+      { name: "Zustand", icon: Dicebear },
+      { name: "Nativewind", icon: Tailwindcss },
+      { name: "TanStack Query", icon: ReactQuery },
       { name: "Appwrite", icon: Appwrite },
     ],
 
     links: {
-      live: "https://your-mealio-demo.com",
-      github: "https://github.com/your-username/mealio",
+      live: "https://mealio-download.netlify.app",
+      github: "https://github.com/Happiesamuel/mealio-fullstack",
     },
 
     images: {
-      cardImage: "/mealio-card.jpeg",
-      mainImage: "/projects/mealio/main.png",
+      cardImage: "/mealio/mealio-card.jpeg",
+      mainImage: "/mealio/mealio-main.jpeg",
       screenshots: [
-        "/projects/mealio/screenshot-1.png",
-        "/projects/mealio/screenshot-2.png",
-        "/projects/mealio/screenshot-3.png",
-        "/projects/mealio/screenshot-4.png",
+        "/mealio/mealio-1.jpg",
+        "/mealio/mealio-2.jpg",
+        "/mealio/mealio-3.jpg",
+        "/mealio/mealio-2.jpg",
       ],
     },
 
@@ -167,8 +173,8 @@ export const projects: Project[] = [
     ],
 
     highlights: [
-      { value: "5+", label: "Core Screens" },
-      { value: "2", label: "Platforms (iOS & Android)" },
+      { value: "7+", label: "Core Screens" },
+      { value: "1", label: "Android" },
       { value: "Live", label: "Order Tracking" },
     ],
 
@@ -187,8 +193,8 @@ export const projects: Project[] = [
 
     icon: {
       name: MdAccountBalance,
-      color: "#3b82f6",
-      bg: "rgba(59,130,246,0.15)",
+      color: "#ffffff",
+      bg: "#3b82f6",
     },
 
     shortDescription:
@@ -198,23 +204,26 @@ export const projects: Project[] = [
 
     techStack: [
       { name: "Next.js", icon: Nextdotjs },
+      { name: "React", icon: React },
       { name: "TypeScript", icon: Typescript },
-      { name: "shadcn/ui", icon: ShadcnUi },
+      { name: "Appwrite", icon: Appwrite },
+      { name: "Tailwind CSS", icon: Tailwindcss },
+      { name: "Shadcn/ui", icon: ShadcnUi },
     ],
 
     links: {
-      live: "https://your-apexbank-demo.com",
-      github: "https://github.com/your-username/apex-bank",
+      live: "https://apexbank.vercel.app",
+      github: "https://github.com/Happiesamuel/apex",
     },
 
     images: {
-      cardImage: "/apex-card.jpeg",
-      mainImage: "/projects/apex-bank/main.png",
+      cardImage: "/apex/apex-card.jpeg",
+      mainImage: "/apex/apex-main.jpeg",
       screenshots: [
-        "/projects/apex-bank/screenshot-1.png",
-        "/projects/apex-bank/screenshot-2.png",
-        "/projects/apex-bank/screenshot-3.png",
-        "/projects/apex-bank/screenshot-4.png",
+        "/apex/apex-1.png",
+        "/apex/apex-2.png",
+        "/apex/apex-3.png",
+        "/apex/apex-4.png",
       ],
     },
 
