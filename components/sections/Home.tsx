@@ -176,14 +176,17 @@ export default function Home() {
                 View My Projects
               </motion.button>
 
-              <motion.button
+              <motion.a
+                href="/cv.pdf"
+                download="Happie-Samuel-CV.pdf"
                 className="btn-secondary cursor-pointer"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
               >
-                Download CV <FiDownload className="text-accent" />
-              </motion.button>
+                Download CV
+                <FiDownload className="text-accent" />
+              </motion.a>
             </motion.div>
 
             <motion.div

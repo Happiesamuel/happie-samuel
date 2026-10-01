@@ -13,6 +13,7 @@ import {
   React,
   Dicebear,
   Gsap,
+  Motion,
 } from "@thesvg/react";
 import { BsTools } from "react-icons/bs";
 import { SvgIconComponent } from "@thesvg/react/types";
@@ -311,8 +312,83 @@ export const projects: Project[] = [
     featured: true,
     year: 2026,
   },
+
   {
     id: 5,
+    slug: "happie-samuel",
+    name: "Happie Samuel",
+    tagline: "Frontend & Mobile Developer Portfolio",
+
+    type: "Developer Portfolio Website",
+    categories: ["web"],
+
+    icon: {
+      name: LuCodesandbox,
+      color: "#ffffff",
+      bg: "#22c55e",
+    },
+
+    shortDescription:
+      "A modern developer portfolio showcasing web and mobile applications, technical skills, professional experience, and selected projects.",
+
+    description:
+      "A modern personal portfolio website built to showcase my work as a Frontend & Mobile Developer. The platform brings together selected projects, professional experience, technical skills, career highlights, and contact information into a polished and responsive digital experience. It highlights projects across web, mobile, SaaS, e-commerce, Web3, and other digital products while providing recruiters and potential clients with a clear overview of my development experience.",
+
+    techStack: [
+      { name: "Next.js", icon: Nextdotjs },
+      { name: "React", icon: ReactIcon },
+      { name: "TypeScript", icon: Typescript },
+      { name: "Tailwind CSS", icon: Tailwindcss },
+      { name: "Shadcn/ui", icon: ShadcnUi },
+      { name: "Framer Motion", icon: Motion },
+    ],
+
+    links: {
+      live: "https://happie-samuel.vercel.app/",
+      github: "https://github.com/Happiesamuel/happie-samuel",
+    },
+
+    images: {
+      cardImage: "/portfolio/portfolio-card.jpeg",
+      mainImage: "/portfolio/portfolio-main.jpeg",
+
+      screenshots: [
+        "/portfolio/portfolio-1.png",
+        "/portfolio/portfolio-2.png",
+        "/portfolio/portfolio-3.png",
+        "/portfolio/portfolio-4.png",
+      ],
+    },
+
+    keyFeatures: [
+      "Modern personal developer portfolio",
+      "Responsive web design",
+      "Interactive project showcase",
+      "Dedicated project detail pages",
+      "Professional experience timeline",
+      "Technical skills showcase",
+      "Developer statistics and career highlights",
+      "Resume / CV access",
+      "Contact and social media integration",
+      "Recruiter-focused navigation",
+      "Responsive layouts across devices",
+      "Modern animated user interface",
+    ],
+
+    highlights: [
+      { value: "10+", label: "Projects" },
+      { value: "2+", label: "Years Coding" },
+      { value: "HNG", label: "Finalist" },
+      { value: "Web + Mobile", label: "Development" },
+    ],
+
+    status: "completed",
+    featured: true,
+    year: 2026,
+  },
+
+  {
+    id: 6,
     slug: "prolific-woman",
     name: "The Prolific Woman Trybe",
     tagline: "Empowering Women to Evolve, Thrive and Lead",
@@ -383,7 +459,7 @@ export const projects: Project[] = [
     year: 2056,
   },
   {
-    id: 6,
+    id: 7,
     slug: "capita-token",
     name: "Capita Token",
     tagline: "Modern Digital Platform for Capita Token",
@@ -447,7 +523,7 @@ export const projects: Project[] = [
   },
 
   {
-    id: 7,
+    id: 8,
     slug: "orbix",
     name: "Orbix",
     tagline: "A Modern E-Commerce Shopping Experience",
@@ -515,7 +591,7 @@ export const projects: Project[] = [
   },
 
   {
-    id: 7,
+    id: 9,
     slug: "chainfundme",
     name: "ChainFundMe",
     tagline: "Decentralized Crowdfunding, Bringing Hope Onchain",
@@ -585,7 +661,7 @@ export const projects: Project[] = [
     year: 2025,
   },
   {
-    id: 8,
+    id: 10,
     slug: "j-designs",
     name: "J-Designs",
     tagline: "Creative UI/UX & Digital Design Portfolio",
@@ -669,6 +745,8 @@ import {
   MdAccountBalanceWallet,
   MdDesignServices,
 } from "react-icons/md";
+import { motion } from "framer-motion";
+import { LuCodesandbox } from "react-icons/lu";
 
 export const iconMap = {
   FaLeaf,

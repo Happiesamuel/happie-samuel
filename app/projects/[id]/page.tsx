@@ -109,7 +109,7 @@ export default function ProjectDetailsPage() {
                   className="size-[50%]"
                 />
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <h1 className="heading-4 sm:heading-3 md:heading-2 text-text-primary">
                   {project.name}
                 </h1>

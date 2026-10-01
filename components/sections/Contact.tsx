@@ -1,7 +1,7 @@
-import { motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowRightLong, FaCheck } from "react-icons/fa6";
 import { PiHandshake } from "react-icons/pi";
 
 import {
@@ -16,6 +16,9 @@ import { Textarea } from "@/components/ui/textarea";
 import Tag from "../utils/Tag";
 import { ContactFormValues, contactInfo, contactSchema } from "@/lib/skills";
 import TextHeader from "../utils/TextHeader";
+import { sendGetInTouch } from "../../lib/action";
+import { toast } from "sonner";
+import { useState } from "react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -37,12 +40,24 @@ export default function Contact() {
     defaultValues: { name: "", email: "", message: "" },
   });
 
-  const onSubmit = async (values: ContactFormValues) => {
-    // wire this up to your email service / API route
-    console.log(values);
-    form.reset();
-  };
+  const [justSucceeded, setJustSucceeded] = useState(false);
 
+  const onSubmit = async (values: ContactFormValues) => {
+    const result = await sendGetInTouch(values);
+
+    if (result.success) {
+      setJustSucceeded(true);
+      toast.success("Message sent!", {
+        description: "Thanks for reaching out — I'll get back to you soon.",
+      });
+      form.reset();
+      setTimeout(() => setJustSucceeded(false), 2200);
+    } else {
+      toast.error("Couldn't send your message", {
+        description: result.error ?? "Please try again in a moment.",
+      });
+    }
+  };
   return (
     <section
       id="contact"
@@ -212,26 +227,102 @@ export default function Contact() {
                   <motion.button
                     type="submit"
                     disabled={form.formState.isSubmitting}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.97 }}
+                    whileHover={
+                      !form.formState.isSubmitting ? { scale: 1.02, y: -2 } : {}
+                    }
+                    whileTap={
+                      !form.formState.isSubmitting ? { scale: 0.97 } : {}
+                    }
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                    className="btn-gradient flex w-full cursor-pointer items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="btn-gradient relative flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden disabled:cursor-not-allowed"
                   >
-                    {form.formState.isSubmitting
-                      ? "Sending..."
-                      : "Send Message"}
-                    <motion.span
-                      variants={{ rest: { x: 0 }, hover: { x: 4 } }}
-                      initial="rest"
-                      whileHover="hover"
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 12,
-                      }}
-                    >
-                      <FaArrowRightLong />
-                    </motion.span>
+                    {/* Shimmer sweep, only while actually sending */}
+                    {form.formState.isSubmitting && (
+                      <motion.span
+                        className="pointer-events-none absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                        animate={{ left: ["-40%", "140%"] }}
+                        transition={{
+                          duration: 1.1,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                      />
+                    )}
+
+                    <AnimatePresence mode="wait">
+                      {justSucceeded ? (
+                        <motion.span
+                          key="success"
+                          initial={{ opacity: 0, y: 8, scale: 0.9 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 350,
+                            damping: 20,
+                          }}
+                          className="relative z-10 flex items-center gap-2"
+                        >
+                          <motion.span
+                            initial={{ scale: 0, rotate: -45 }}
+                            animate={{ scale: 1, rotate: 0 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 400,
+                              damping: 12,
+                              delay: 0.1,
+                            }}
+                            className="flex size-5 items-center justify-center rounded-full bg-white/20"
+                          >
+                            <FaCheck size={11} />
+                          </motion.span>
+                          Sent
+                        </motion.span>
+                      ) : form.formState.isSubmitting ? (
+                        <motion.span
+                          key="sending"
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.2 }}
+                          className="relative z-10 flex items-center gap-2.5"
+                        >
+                          <motion.span
+                            animate={{ rotate: 360 }}
+                            transition={{
+                              duration: 0.7,
+                              repeat: Infinity,
+                              ease: "linear",
+                            }}
+                            className="size-4 rounded-full border-2 border-white/30 border-t-white"
+                          />
+                          Sending...
+                        </motion.span>
+                      ) : (
+                        <motion.span
+                          key="idle"
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.2 }}
+                          className="relative z-10 flex items-center gap-2"
+                        >
+                          Send Message
+                          <motion.span
+                            variants={{ rest: { x: 0 }, hover: { x: 4 } }}
+                            initial="rest"
+                            whileHover="hover"
+                            transition={{
+                              type: "spring",
+                              stiffness: 400,
+                              damping: 12,
+                            }}
+                          >
+                            <FaArrowRightLong />
+                          </motion.span>
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
                   </motion.button>
                 </form>
               </Form>

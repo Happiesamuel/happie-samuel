@@ -160,8 +160,8 @@ export const contactInfo = [
   },
   {
     icon: FaWhatsapp,
-    label: "Github",
-    value: "+234 90 6541 6113",
+    label: "Whatsapp",
+    value: "+234 906 541 6113",
     href: "https://wa.me/2349065416113",
   },
   {
