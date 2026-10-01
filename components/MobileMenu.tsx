@@ -234,14 +234,15 @@ export default function MobileMenu({
                 ))}
               </div>
 
-              <motion.button
+              <motion.a
+                href="/#contact"
                 onClick={onLinkClick}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn-primary cursor-pointer rounded-[10px] px-4 py-2 text-text-primary text-caption"
               >
                 Hire Me
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
         </>
