@@ -167,14 +167,15 @@ export default function Home() {
               variants={fadeUp as Variants}
               className="mt-4 md:mt-6 flex items-center justify-center gap-4"
             >
-              <motion.button
+              <motion.a
                 className="btn-glow cursor-pointer"
+                href="/#projects"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
               >
                 View My Projects
-              </motion.button>
+              </motion.a>
 
               <motion.a
                 href="/cv.pdf"

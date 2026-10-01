@@ -182,7 +182,8 @@ export default function Navbar() {
           onToggle={() => setMobileOpen((v) => !v)}
         />
         {/* CTA */}
-        <motion.button
+        <motion.a
+          href="/#contact"
           initial="rest"
           whileHover="hover"
           whileTap={{ scale: 0.95 }}
@@ -205,7 +206,7 @@ export default function Navbar() {
             }}
             className="pointer-events-none absolute inset-y-0 left-0 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent"
           />
-        </motion.button>
+        </motion.a>
       </motion.nav>
     </motion.header>
   );

@@ -187,8 +187,9 @@ export default function About() {
               );
             })}
           </motion.div>
-          <motion.button
-            className="btn-gradient text-[14px] cursor-pointer mt-8 flex items-center gap-2 group"
+          <motion.a
+            href="/#contact"
+            className="btn-gradient w-fit text-[14px] cursor-pointer mt-8 flex items-center gap-2 group"
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
@@ -206,7 +207,7 @@ export default function About() {
             >
               <FaArrowRightLong />
             </motion.span>
-          </motion.button>
+          </motion.a>
         </div>
         <div className="relative flex justify-center items-center w-full">
           {/* Glow behind portrait */}
