@@ -14,6 +14,7 @@ import { projects } from "@/lib/utils";
 
 import Link from "next/link";
 import TextHeader from "../utils/TextHeader";
+import TransitionLink from "@/lib/TransitionLink";
 export type ProjectCategory = "web" | "mobile" | "full-stack" | "all";
 const PAGE_SIZE = 6;
 
@@ -90,7 +91,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative h-full pb-8 pt-32   overflow-hidden bg-[#050807] px-3 md:px-12"
+      className="relative h-full pb-8 pt-25   overflow-hidden bg-[#050807] px-3 sm-px-4  md:px-6 lg:px-12"
     >
       <div className="absolute inset-0 bg-[#050807]" />
       <div
@@ -118,7 +119,7 @@ export default function Projects() {
         />
       </div>
       <div className="relative z-10  mx-auto max-w-7xl ">
-        <div className="flex flex-col gap-4 pb-8 md:flex-row items-center justify-between">
+        <div className="flex flex-col gap-4 pb-8 lg:flex-row lg:items-center justify-between">
           <TextHeader
             headingWords={[{ text: "Featured" }, { text: "Projects" }]}
             paragraph="  Here are some of the projects I've built, ranging from web
@@ -132,7 +133,7 @@ export default function Projects() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.6 }}
-            className="flex items-center gap-1 rounded-full border border-border bg-card/60 p-1 backdrop-blur-md "
+            className="flex items-center w-fit mx-auto lg:mx-0 gap-1 rounded-full border border-border bg-card/60 p-1 backdrop-blur-md "
           >
             {tags.map((tag) => {
               const isActive = activeTag === tag.slug;
@@ -171,7 +172,7 @@ export default function Projects() {
         <motion.div
           ref={gridRef}
           layout
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:w-[90%] mx-auto scroll-mt-28"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:w-[98%] xl:w-[90%] mx-auto scroll-mt-28"
         >
           <AnimatePresence mode="popLayout">
             {visibleProjects.map((project, i) => {
@@ -201,7 +202,7 @@ export default function Projects() {
                     y: -6,
                     transition: { type: "spring", stiffness: 300, damping: 24 },
                   }}
-                  className="project-card group w-full mx-auto cursor-pointer"
+                  className="project-card max-w-[380px] mx-auto group w-full mx-auto cursor-pointer"
                 >
                   {/* Image */}
                   <div className="project-image">
@@ -229,18 +230,18 @@ export default function Projects() {
                           />
                         </div>
 
-                        <h3 className="text-lg font-bold text-text-primary">
+                        <h3 className="text-base md:text-lg font-bold text-text-primary">
                           {project.name}
                         </h3>
                       </div>
 
-                      <p className="text-sm leading-6 text-text-secondary">
+                      <p className="text-sm leading-6 text-text-secondary line-clamp-2">
                         {project.shortDescription}
                       </p>
                     </div>
 
                     {/* Tech pills: static, CSS-only hover */}
-                    <div className="flex flex-wrap items-center gap-2">
+                    <div className="flex items-center gap-2 overflow-hidden whitespace-nowrap">
                       {project.techStack.slice(0, 3).map(({ name, icon }) => {
                         const TechIcon = icon;
                         return (
@@ -256,13 +257,13 @@ export default function Projects() {
                     </div>
 
                     {/* Link: stretched, so the whole card is clickable */}
-                    <Link
+                    <TransitionLink
                       href={`/projects/${project.slug}`}
                       className="project-link after:absolute after:inset-0"
                     >
                       View Project
                       <FaArrowRightLong className="transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
+                    </TransitionLink>
                   </div>
                 </motion.article>
               );

@@ -1,7 +1,7 @@
 import React from "react";
 import Tag from "../utils/Tag";
 import { FaLinkedinIn, FaRegUser, FaUserSecret } from "react-icons/fa";
-import { FaArrowRightLong, FaLocationDot } from "react-icons/fa6";
+import { FaArrowRightLong, FaLocationDot, FaWhatsapp } from "react-icons/fa6";
 import {
   MdEventAvailable,
   MdOutlineMail,
@@ -12,7 +12,15 @@ import Image from "next/image";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 
 import { motion, Variants } from "framer-motion";
+import { LuCodesandbox } from "react-icons/lu";
 export default function About() {
+  const socials = [
+    { icon: FaGithub, href: "https://github.com/Happiesamuel" },
+    { icon: FaLinkedinIn, href: "https://linkedin.com/in/hs-the-dev" },
+    { icon: FaXTwitter, href: "https://x.com/hs_the_dev" },
+    { icon: MdOutlineMailOutline, href: "mailto:odionsamuel2005@gmail.com" },
+    { icon: FaWhatsapp, href: "https://wa.me/2349065416113" },
+  ];
   const obj = [
     {
       icon: FaLocationDot,
@@ -82,7 +90,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative pt-32  pb-8 h-full overflow-hidden bg-[#050807] px-3 md:px-12"
+      className="relative pt-25  pb-8 h-full overflow-hidden bg-[#050807] px-3 md:px-6 lg:px-12"
     >
       <div className="absolute inset-0 bg-[#050807]" />
 
@@ -111,8 +119,8 @@ export default function About() {
             "radial-gradient(circle at center 75%, transparent 55%, rgba(0,0,0,0.35) 100%)",
         }}
       />
-      <div className="relative mx-auto max-w-7xl z-10 gap-10 flex md:flex-row flex-col items-center justify-between">
-        <div className="max-w-[550px]">
+      <div className="relative mx-auto max-w-7xl z-10 gap-10 flex lg:flex-row flex-col items-center justify-between">
+        <div className="lg:max-w-[550px]">
           <Tag text="About Me" Icon={FaRegUser} />
           <motion.h1
             variants={wordContainer}
@@ -151,7 +159,7 @@ export default function About() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mt-3 md:mt-6 "
+            className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mt-6 "
           >
             {obj.map((o) => {
               const Icon = o.icon;
@@ -255,15 +263,35 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="absolute -bottom-6 h-33 sm:h-36 w-60 sm:w-75 right-0 flex flex-col   rounded-md border border-border px-5 py-4 sm:px-6 sm:py-5 bg-card/80 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
+            className="absolute -bottom-6 h-33 sm:h-36 w-70 sm:w-75  md:right-0 flex flex-col   rounded-md border border-border px-5 py-4 sm:px-6 sm:py-5 bg-card/80 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
           >
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 shrink-0 flex items-center  justify-center overflow-hidden rounded-full border border-accent/30">
-                <FaUserSecret className="text-accent" size={18} />
-              </div>
+            <div className="flex items-center group gap-3">
+              <motion.div
+                whileHover={{ rotate: -8, scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                className="relative flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 text-accent transition-colors duration-300 group-hover:bg-primary/25"
+              >
+                {/* Breathing glow, like a cursor pulse rather than a sway */}
+                <motion.span
+                  animate={{
+                    boxShadow: [
+                      "0 0 14px rgba(34,197,94,0.2)",
+                      "0 0 26px rgba(74,222,128,0.4)",
+                      "0 0 14px rgba(34,197,94,0.2)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 2.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute inset-0 rounded-full"
+                />
+                <LuCodesandbox size={18} className="relative" />
+              </motion.div>
 
-              <div className="flex flex-col">
-                <p className="text-small font-semibold text-text-primary">
+              <div className="flex flex-col ">
+                <p className="text-small group-hover:text-accent font-semibold text-text-primary">
                   Happie Samuel
                 </p>
                 <p className="text-caption text-text-secondary">
@@ -273,19 +301,19 @@ export default function About() {
             </div>
 
             <div className="mt-2 sm:mt-5 flex items-center gap-5">
-              {[FaGithub, FaXTwitter, FaLinkedinIn, MdOutlineMail].map(
-                (Icon, i) => (
-                  <motion.a
-                    key={i}
-                    href="#"
-                    whileHover={{ y: -2, color: "var(--accent)" }}
-                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                    className="flex size-8 shrink-0 items-center justify-center rounded-[10px] border border-accent/10 backdrop-blur-lg bg-accent/5 text-accent shadow-[0_0_0px_rgba(74,222,128,0)] transition-shadow duration-300 hover:bg-accent/20 hover:shadow-[0_0_16px_rgba(74,222,128,0.35)]"
-                  >
-                    <Icon size={18} />
-                  </motion.a>
-                ),
-              )}
+              {socials.map(({ icon: Icon, href }, i) => (
+                <motion.a
+                  key={i}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
+                  whileHover={{ y: -2, color: "var(--accent)" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                  className="flex size-8 shrink-0 items-center justify-center rounded-[10px] border border-accent/10 backdrop-blur-lg bg-accent/5 text-accent shadow-[0_0_0px_rgba(74,222,128,0)] transition-shadow duration-300 hover:bg-accent/20 hover:shadow-[0_0_16px_rgba(74,222,128,0.35)]"
+                >
+                  <Icon size={18} />
+                </motion.a>
+              ))}
             </div>
           </motion.div>
         </div>

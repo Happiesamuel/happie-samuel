@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { CursorGlow } from "@/components/utils/CursorGlow";
 import ClientRoot from "@/components/ClientRoot";
+import TransitionProvider from "@/lib/TransitionProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const caveat = Caveat({
@@ -36,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <ClientRoot>
         <body className="min-h-full flex flex-col">
           <CursorGlow />
-          {children}
+          <TransitionProvider>{children}</TransitionProvider>
         </body>
       </ClientRoot>
     </html>

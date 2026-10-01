@@ -3,6 +3,9 @@ import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import EasterEgg, { useEasterEgg } from "./sections/EasterEgg";
+import MobileMenu, { MobileMenuTrigger } from "./MobileMenu";
+
+import { LuCodesandbox } from "react-icons/lu";
 
 const links = [
   { title: "Home", link: "/#home" },
@@ -27,7 +30,7 @@ export default function Navbar() {
   const [activeId, setActiveId] = useState<string>("home");
   const [scrolled, setScrolled] = useState(false);
   const { isOpen, setIsOpen, trigger } = useEasterEgg();
-  // Active section tracking (unchanged)
+  const [mobileOpen, setMobileOpen] = useState(false);
   useEffect(() => {
     const sections = links
       .map((l) => document.querySelector(l.link.slice(1)))
@@ -66,8 +69,15 @@ export default function Navbar() {
       initial={{ y: -90, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 120, damping: 18 }}
-      className="fixed inset-x-0 top-0 z-[200] px-4 pt-4 max-w-[120rem] mx-auto w-full"
+      className="fixed inset-x-0 top-0 z-[200] px-3 md:px-4 pt-4 max-w-[120rem] mx-auto w-full"
     >
+      <MobileMenu
+        isOpen={mobileOpen}
+        onToggle={() => setMobileOpen(false)}
+        onLinkClick={() => setMobileOpen(false)}
+        links={links}
+        activeId={activeId}
+      />
       <motion.nav
         animate={{
           height: scrolled ? 56 : 64,
@@ -84,34 +94,49 @@ export default function Navbar() {
             e.preventDefault();
             trigger();
           }}
-          className="group flex items-center gap-3"
+          className="group flex items-center gap-2.5"
         >
-          <div
-            className="
-              flex h-10 w-10 items-center justify-center
-              rounded-full bg-primary/15
-              shadow-[0_0_18px_rgba(34,197,94,.25)]
-              transition-all duration-300
-              group-hover:bg-primary/25
-              group-hover:shadow-[0_0_30px_rgba(74,222,128,.45)]
-            "
+          <motion.div
+            whileHover={{ rotate: -8, scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            className="relative flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 text-accent transition-colors duration-300 group-hover:bg-primary/25"
           >
-            {/* Idle sway, like a leaf in a light breeze */}
+            {/* Breathing glow, like a cursor pulse rather than a sway */}
             <motion.span
-              animate={{ rotate: [0, 10, -8, 0] }}
+              animate={{
+                boxShadow: [
+                  "0 0 14px rgba(34,197,94,0.2)",
+                  "0 0 26px rgba(74,222,128,0.4)",
+                  "0 0 14px rgba(34,197,94,0.2)",
+                ],
+              }}
               transition={{
-                duration: 6,
+                duration: 2.4,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="inline-block"
-            >
-              🌿
-            </motion.span>
-          </div>
+              className="absolute inset-0 rounded-full"
+            />
+            <LuCodesandbox size={18} className="relative" />
+          </motion.div>
 
-          <span className="text-base font-bold tracking-tight text-text-primary">
-            Happie
+          <span className="flex items-center font-mono text-base font-semibold tracking-tight">
+            <span className="flex items-baseline font-mono text-base font-semibold tracking-tight">
+              <span className="text-text-primary transition-colors duration-300 group-hover:text-accent">
+                Happie
+              </span>
+            </span>
+
+            {/* Blinking cursor, like an editor caret */}
+            <motion.span
+              animate={{ opacity: [1, 1, 0, 0] }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+                times: [0, 0.5, 0.5, 1],
+              }}
+              className="ml-1 h-[14px] w-[2px] bg-accent"
+            />
           </span>
         </Link>
 
@@ -122,7 +147,7 @@ export default function Navbar() {
           variants={linksContainer}
           initial="hidden"
           animate="show"
-          className="hidden items-center gap-2 md:flex"
+          className="hidden items-center gap-2 lg:flex"
         >
           {links.map((l) => {
             const id = l.link.replace("/#", "");
@@ -152,7 +177,10 @@ export default function Navbar() {
             );
           })}
         </motion.div>
-
+        <MobileMenuTrigger
+          isOpen={mobileOpen}
+          onToggle={() => setMobileOpen((v) => !v)}
+        />
         {/* CTA */}
         <motion.button
           initial="rest"
@@ -161,7 +189,7 @@ export default function Navbar() {
           animate="rest"
           variants={{ rest: { scale: 1 }, hover: { scale: 1.05 } }}
           transition={{ type: "spring", stiffness: 400, damping: 15 }}
-          className="btn-primary relative cursor-pointer overflow-hidden rounded-[12px]"
+          className="btn-primary hidden lg:block relative cursor-pointer overflow-hidden rounded-[12px]"
         >
           <span className="relative z-10">Hire Me</span>
 

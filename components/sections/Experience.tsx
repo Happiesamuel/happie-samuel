@@ -40,7 +40,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative h-full overflow-hidden bg-[#050807] px-3 pb-16 pt-32 md:px-12"
+      className="relative h-full overflow-hidden bg-[#050807] px-3 pb-16 pt-25 sm-px-4  md:px-6 lg:px-12"
     >
       {/* Background — same pattern as your other sections */}
       <div className="absolute inset-0 bg-[#050807]" />
@@ -78,7 +78,7 @@ export default function Experience() {
           <Tag text="Experience" Icon={FaBriefcase} />
         </TextHeader>
 
-        <div className="flex flex-col gap-10 md:flex-row items-start mt-8 md:mt-16 justify-between">
+        <div className="flex flex-col gap-10 lg:grid grid-cols-[1fr_0.6fr] items-start mt-6 md:mt-8 lg:mt-12 justify-between">
           <div className="w-full">
             <motion.div
               variants={container}
@@ -117,7 +117,7 @@ export default function Experience() {
                   </motion.span>
 
                   {/* Text */}
-                  <div className="flex flex-col md:flex-row gap-1 md:gap-5 items-start justify-start max-w-[500px]">
+                  <div className="flex flex-col md:grid grid-cols-[0.23fr_1fr] gap-1  items-start justify-start max-w-[500px">
                     <p className="text-caption font-medium text-accent">
                       {entry.period}
                     </p>
@@ -147,7 +147,7 @@ export default function Experience() {
                 ease: [0.22, 1, 0.36, 1],
                 delay: 0.3,
               }}
-              className="flex project-card max-w-[300px] h-fit flex-col justify-center gap-4 rounded-[24px] border border-accent/15 bg-card/50 p-8 backdrop-blur-md "
+              className="flex project-card max-w-[300px] md:max-w-[400px] h-fit flex-col justify-center gap-4 rounded-[24px] border border-accent/15 bg-card/50 p-8 backdrop-blur-md "
             >
               <BiSolidQuoteAltLeft className="text-4xl leading-none text-accent/60" />
               <p className="text-lg font-medium leading-relaxed text-text-primary">

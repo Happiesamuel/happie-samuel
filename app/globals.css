@@ -261,6 +261,36 @@
 html {
   scroll-behavior: smooth;
 }
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4ade80 #0a0f0d;
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050807;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #22c55e 0%, #4ade80 50%, #22c55e 100%);
+  border-radius: 999px;
+  border: 2px solid #050807; /* creates a slight inset/padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4ade80 0%, #86efac 50%, #4ade80 100%);
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background: #050807;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -444,7 +474,7 @@ html {
   }
 
   .heading-hero {
-    @apply text-text-primary font-bold tracking-tight text-h3 md:text-hero leading-8.75 md:leading-hero;
+    @apply text-text-primary font-bold tracking-tight text-h3 sm:text-h2 md:text-h1 lg:text-hero leading-8.75 md:leading-hero;
   }
 
   .heading-1 {
@@ -501,7 +531,7 @@ html {
 
   .project-card {
     @apply relative overflow-hidden rounded-[20px] md:rounded-[28px]
-         border border-border
+         border border-accent/15
         p-3 md:p-5
          backdrop-blur-[22px]
          transition-all duration-200;
@@ -543,7 +573,7 @@ html {
   }
   .project-image {
     @apply relative mb-5 h-35 md:h-40 overflow-hidden rounded-[12px] md:rounded-[20px]
-         border border-white/10;
+         border border-accent/10;
   }
 
   .project-image::before {
@@ -650,7 +680,7 @@ html {
   }
 
   .stats-label {
-    @apply text-[10px] sm:text-small
+    @apply text-[10px] sm:text-caption md:text-small
            text-text-secondary
            whitespace-nowrap;
   }

@@ -14,7 +14,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative h-full overflow-hidden bg-[#050807] px-3 pb-8 pt-32 md:px-12"
+      className="relative h-full overflow-hidden bg-[#050807] px-3 pb-8 pt-25 sm-px-4 md:px-6 lg:px-12"
     >
       {/* Base */}
       <div className="absolute inset-0 bg-[#050807]" />

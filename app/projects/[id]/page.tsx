@@ -51,7 +51,7 @@ export default function ProjectDetailsPage() {
   const Icon = project.icon.name;
 
   return (
-    <section className="relative h-full overflow-hidden bg-[#050807] px-3 pb-20 pt-28 md:px-12">
+    <section className="relative h-full overflow-hidden bg-[#050807] px-3 sm:px-4 md:px-6 pb-20 pt-28 lg:px-12">
       {/* Background */}
       <div className="absolute inset-0 bg-[#050807]" />
       <div
@@ -91,11 +91,11 @@ export default function ProjectDetailsPage() {
           </Link>
         </motion.div>
 
-        <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+        <div className="mt-6 grid  gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
           <div className="w-full">
             <motion.div
               variants={fadeUp as unknown as Variants}
-              className="grid grid-cols-[0.15fr_1fr] sm:flex items-center gap-4.5"
+              className="grid  grid-cols-[0.15fr_1fr] sm:flex items-center gap-4.5"
             >
               <div
                 style={{
@@ -109,17 +109,19 @@ export default function ProjectDetailsPage() {
                   className="size-[50%]"
                 />
               </div>
-              <div>
-                <h1 className="heading-3 sm:heading-2 text-text-primary">
+              <div className="space-y-1.5">
+                <h1 className="heading-4 sm:heading-3 md:heading-2 text-text-primary">
                   {project.name}
                 </h1>
-                <p className="text-sm text-text-secondary">{project.tagline}</p>
+                <p className="text-sm  text-text-secondary">
+                  {project.tagline}
+                </p>
               </div>
             </motion.div>
 
             <motion.p
               variants={fadeUp as unknown as Variants}
-              className="mt-5 max-w-[550px] text-sm leading-7 text-text-secondary"
+              className="mt-5 lg:max-w-[600px] text-sm leading-7 text-text-secondary"
             >
               {project.description}
             </motion.p>
@@ -232,7 +234,7 @@ export default function ProjectDetailsPage() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
-              className="mt-4 flex flex-col gap-3"
+              className="mt-4 flex flex-col gap-3 max-h-[210px] overflow-y-scroll no-scrollbar "
             >
               {project.keyFeatures.map((feature) => (
                 <motion.li

@@ -20,7 +20,13 @@ import {
   Dart,
 } from "@thesvg/react";
 import { MdOutlineMailOutline } from "react-icons/md";
-import { FaLinkedinIn, FaLocationDot, FaXTwitter } from "react-icons/fa6";
+import {
+  FaGithub,
+  FaLinkedinIn,
+  FaLocationDot,
+  FaWhatsapp,
+  FaXTwitter,
+} from "react-icons/fa6";
 
 export interface Skill {
   name: string;
@@ -91,25 +97,43 @@ export interface TimelineEntry {
 
 export const timeline: TimelineEntry[] = [
   {
-    period: "2024 - Present",
-    title: "Frontend Developer (Self Employed)",
-    sub: "",
+    period: "2025 - Present",
+    title: "Frontend & Mobile Developer",
+    sub: "Independent / Personal Projects",
     description:
-      "Building real-world applications and working on personal projects like Smart Farm and Mealio.",
+      "Building and shipping real-world web and mobile applications across SaaS, e-commerce, Web3, and food delivery. Projects include Smart Farm, Mealio, ChainFundMe, Future Tech, and other client and personal projects.",
   },
+
   {
-    period: "2023 - 2024",
-    title: "HNG Internship 12",
-    sub: "",
+    period: "Jul 2025 - Nov 2025",
+    title: "Junior Frontend Developer",
+    sub: "Rhocom Technology Limited",
     description:
-      "Frontend Finalist. Built production-ready applications and collaborated with amazing teams.",
+      "Worked on production web applications including a procurement and tender management platform using Angular, TypeScript, Tailwind CSS, PrimeNG, and REST APIs.",
   },
+
   {
-    period: "2020 - 2024",
-    title: "University of Benin",
-    sub: "BSc, Computer Science.",
+    period: "Jan 2025 - Oct 2025",
+    title: "Frontend Web Developer",
+    sub: "Capita Dapps Bridge Limited",
     description:
-      " Gained a strong foundation in software development and problem solving.",
+      "Developed responsive web interfaces using React and Next.js, integrated REST APIs, built reusable components with Tailwind CSS, and collaborated remotely on real-world digital products.",
+  },
+
+  {
+    period: "Feb 2025 - Apr 2025",
+    title: "Frontend Developer Intern",
+    sub: "HNG Tech Internship 12",
+    description:
+      "Progressed to Frontend Finalist while collaborating on real-world development tasks and building production-oriented interfaces with modern frontend technologies.",
+  },
+
+  {
+    period: "2023 - 2026",
+    title: "B.Sc. Computer Science",
+    sub: "University of Benin",
+    description:
+      "Built a strong foundation in software engineering, programming, databases, algorithms, system design, and problem solving while developing practical projects alongside my studies.",
   },
 ];
 
@@ -129,16 +153,28 @@ export const contactInfo = [
     href: "mailto:odionsamuel2005@gmail.com",
   },
   {
+    icon: FaGithub,
+    label: "Github",
+    value: "github.com/Happiesamuel",
+    href: "https://github.com/Happiesamuel",
+  },
+  {
+    icon: FaWhatsapp,
+    label: "Github",
+    value: "+234 90 6541 6113",
+    href: "https://wa.me/2349065416113",
+  },
+  {
     icon: FaLinkedinIn,
     label: "LinkedIn",
-    value: "linkedin.com/in/ha-the-dev",
-    href: "https://linkedin.com/in/ha-the-dev",
+    value: "linkedin.com/in/hs-the-dev",
+    href: "https://linkedin.com/in/hs-the-dev",
   },
   {
     icon: FaXTwitter,
     label: "X (Twitter)",
-    value: "x.com/ha_the_dev",
-    href: "https://x.com/ha_the_dev",
+    value: "x.com/hs_the_dev",
+    href: "https://x.com/hs_the_dev",
   },
   {
     icon: FaLocationDot,

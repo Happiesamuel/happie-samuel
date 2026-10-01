@@ -132,7 +132,7 @@ export default function Home() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="flex items-center justify-center flex-col w-full gap-16"
+          className="flex items-center justify-center flex-col w-full gap-10 md:gap-16"
         >
           <div className="flex flex-col items-center justify-center">
             <motion.div variants={fadeUp as Variants}>

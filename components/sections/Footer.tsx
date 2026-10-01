@@ -1,9 +1,16 @@
 "use client";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import {
+  FaGithub,
+  FaLinkedinIn,
+  FaWhatsapp,
+  FaXTwitter,
+} from "react-icons/fa6";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
+import { LuCodesandbox } from "react-icons/lu";
+import TransitionLink from "@/lib/TransitionLink";
 
 const quickLinks = [
   { label: "Home", href: "#home" },
@@ -15,19 +22,20 @@ const quickLinks = [
 ];
 
 const projectLinks = [
-  { label: "Smart Farm", href: "/projects/smart-farm" },
+  { label: "Smart Farm", href: "/projects/smart-farm-management-system" },
   { label: "Mealio", href: "/projects/mealio" },
   { label: "Apex Bank", href: "/projects/apex-bank" },
   { label: "ChainFundMe", href: "/projects/chainfundme" },
-  { label: "Or6ix", href: "/projects/or6ix" },
-  { label: "Flutter UI", href: "/projects/flutter-ui" },
+  { label: "Orbix", href: "/projects/orbix" },
+  { label: "Future Tech", href: "/projects/future-tech" },
 ];
 
 const socials = [
-  { icon: FaGithub, href: "https://github.com/your-username" },
-  { icon: FaLinkedinIn, href: "https://linkedin.com/in/ha-the-dev" },
-  { icon: FaXTwitter, href: "https://x.com/ha_the_dev" },
+  { icon: FaGithub, href: "https://github.com/Happiesamuel" },
+  { icon: FaLinkedinIn, href: "https://linkedin.com/in/hs-the-dev" },
+  { icon: FaXTwitter, href: "https://x.com/hs_the_dev" },
   { icon: MdOutlineMailOutline, href: "mailto:odionsamuel2005@gmail.com" },
+  { icon: FaWhatsapp, href: "https://wa.me/2349065416113" },
 ];
 
 const container = {
@@ -78,10 +86,35 @@ export default function Footer() {
           variants={fadeUp as unknown as Variants}
           className="col-span-2 md:col-span-1"
         >
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl">🌿</span>
-            <span className="text-base font-bold text-text-primary">
-              Happie
+          <Link href="/" className="group flex items-center gap-2.5">
+            <motion.div
+              whileHover={{ rotate: -8, scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              className="relative flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 text-accent transition-colors duration-300 group-hover:bg-primary/25"
+            >
+              {/* Breathing glow, like a cursor pulse rather than a sway */}
+              <motion.span
+                animate={{
+                  boxShadow: [
+                    "0 0 14px rgba(34,197,94,0.2)",
+                    "0 0 26px rgba(74,222,128,0.4)",
+                    "0 0 14px rgba(34,197,94,0.2)",
+                  ],
+                }}
+                transition={{
+                  duration: 2.4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 rounded-full"
+              />
+              <LuCodesandbox size={18} className="relative" />
+            </motion.div>
+
+            <span className="flex items-baseline font-mono text-base font-semibold tracking-tight">
+              <span className="text-text-primary transition-colors duration-300 group-hover:text-accent">
+                Happie
+              </span>
             </span>
           </Link>
 
@@ -137,14 +170,12 @@ export default function Footer() {
           <motion.ul variants={linkList} className="mt-4 flex flex-col gap-3">
             {projectLinks.map(({ label, href }) => (
               <motion.li key={label} variants={linkItem as unknown as Variants}>
-                <motion.a
+                <TransitionLink
                   href={href}
-                  whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className="inline-block text-sm text-text-secondary transition-colors hover:text-accent"
                 >
                   {label}
-                </motion.a>
+                </TransitionLink>
               </motion.li>
             ))}
           </motion.ul>

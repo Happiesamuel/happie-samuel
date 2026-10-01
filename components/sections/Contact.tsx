@@ -1,9 +1,7 @@
 import { motion, Variants } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FaArrowRightLong, FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { PiHandshake } from "react-icons/pi";
 
 import {
@@ -48,7 +46,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative h-full overflow-hidden bg-[#050807] px-3 pb-20 pt-32 md:px-12"
+      className="relative h-full overflow-hidden bg-[#050807] px-3 sm-px-4  md:px-6 pb-20 pt-25 lg:px-12"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-[#050807]" />
@@ -90,14 +88,14 @@ export default function Contact() {
         >
           <Tag text="Get In Touch" Icon={PiHandshake} />
         </TextHeader>
-        <div className="flex flex-col gap-7 md:flex-row items-start justify-between">
-          <div className="w-full mt-4 md:mt-10 ">
+        <div className="flex mt-4 md:mt-10 flex-col gap-10 lg:flex-row items-start justify-between">
+          <div className="w-full  ">
             <motion.div
               variants={container}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.3 }}
-              className="flex flex-col gap-6"
+              className="flex flex-col sm:grid grid-cols-2 gap-6"
             >
               {contactInfo.map(({ icon: Icon, label, value, href }) => (
                 <motion.div
@@ -152,7 +150,7 @@ export default function Contact() {
                 ease: [0.22, 1, 0.36, 1],
                 delay: 0.2,
               }}
-              className="rounded-[24px] w-full md:w-[70%] border border-border bg-card/50 p-6 backdrop-blur-md md:p-8"
+              className="rounded-[24px] max-w-[380px] lg:max-w-[450px] mx-auto w-full border border-border bg-card/50 p-6 backdrop-blur-md md:p-8"
             >
               <Form {...form}>
                 <form
