@@ -101,7 +101,7 @@ export const timeline: TimelineEntry[] = [
     title: "Frontend & Mobile Developer",
     sub: "Independent / Personal Projects",
     description:
-      "Building and shipping real-world web and mobile applications across SaaS, e-commerce, Web3, and food delivery. Projects include Smart Farm, Mealio, ChainFundMe, Future Tech, and other client and personal projects.",
+      "Building and shipping web and mobile applications using React, Next.js, TypeScript, React Native, and Flutter. Projects include Smart Farm Management System, Mealio, ChainFundMe, Future Tech, and other personal and collaborative projects.",
   },
 
   {
@@ -109,7 +109,7 @@ export const timeline: TimelineEntry[] = [
     title: "Junior Frontend Developer",
     sub: "Rhocom Technology Limited",
     description:
-      "Worked on production web applications including a procurement and tender management platform using Angular, TypeScript, Tailwind CSS, PrimeNG, and REST APIs.",
+      "Developed frontend features for web applications, including a procurement and tender management platform using Angular, TypeScript, Tailwind CSS, PrimeNG, and REST APIs.",
   },
 
   {
@@ -117,7 +117,7 @@ export const timeline: TimelineEntry[] = [
     title: "Frontend Web Developer",
     sub: "Capita Dapps Bridge Limited",
     description:
-      "Developed responsive web interfaces using React and Next.js, integrated REST APIs, built reusable components with Tailwind CSS, and collaborated remotely on real-world digital products.",
+      "Built responsive web interfaces with React and Next.js, integrated REST APIs, developed reusable components with Tailwind CSS, and collaborated remotely on digital products.",
   },
 
   {
@@ -125,7 +125,7 @@ export const timeline: TimelineEntry[] = [
     title: "Frontend Developer Intern",
     sub: "HNG Tech Internship 12",
     description:
-      "Progressed to Frontend Finalist while collaborating on real-world development tasks and building production-oriented interfaces with modern frontend technologies.",
+      "Completed the Frontend Development track, collaborating on real-world tasks and building responsive web interfaces with modern frontend technologies. Finished as a Frontend Finalist.",
   },
 
   {
@@ -133,7 +133,7 @@ export const timeline: TimelineEntry[] = [
     title: "B.Sc. Computer Science",
     sub: "University of Benin",
     description:
-      "Built a strong foundation in software engineering, programming, databases, algorithms, system design, and problem solving while developing practical projects alongside my studies.",
+      "Studied software engineering, programming, databases, algorithms, system design, and problem solving while developing practical software projects alongside my studies.",
   },
 ];
 

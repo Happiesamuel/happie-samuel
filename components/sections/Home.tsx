@@ -75,7 +75,7 @@ export default function Home() {
       icon: FolderKanban,
     },
     {
-      title: "4+",
+      title: "2+",
       sub: "Years Coding",
       icon: Clock,
     },

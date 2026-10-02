@@ -63,7 +63,7 @@ export const projects: Project[] = [
     id: 1,
     slug: "smart-farm-management-system",
     name: "Smart Farm Management System",
-    tagline: "Multi-workspace Farm Management System",
+    tagline: "Smart Farm Management for Better Agricultural Productivity",
     type: "Web Application",
     categories: ["web", "full-stack"],
 
@@ -74,9 +74,10 @@ export const projects: Project[] = [
     },
 
     shortDescription:
-      "Multi-workspace farm management platform with analytics and AI insights.",
+      "A multi-workspace farm management platform for managing farms, crops, operations, finances, and agricultural activities.",
+
     description:
-      "A modern, intelligent farm management platform that helps farmers and agribusinesses manage farms, fields, crops, workers, harvests, finances and daily operations from one centralized dashboard.",
+      "A modern farm management platform designed to help farmers and agribusinesses manage multiple farms, track crops and fields, organize farm operations, monitor finances, manage workers, and receive smart alerts and recommendations from one centralized dashboard.",
 
     techStack: [
       { name: "Next.js", icon: Nextdotjs },
@@ -104,11 +105,13 @@ export const projects: Project[] = [
     },
 
     keyFeatures: [
-      "Multi-workspace management",
-      "Crop & field tracking",
-      "Financial analytics",
-      "Weather integration",
-      "Smart insights & recommendations",
+      "Multi-workspace farm management",
+      "Farm, field, and crop tracking",
+      "Worker and task management",
+      "Farm operations and activity logging",
+      "Financial tracking and analytics",
+      "Weather monitoring and farm insights",
+      "Smart alerts and recommendations",
     ],
 
     highlights: [
